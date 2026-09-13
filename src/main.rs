@@ -13,12 +13,10 @@ use anyhow::Result;
 
 fn main() -> Result<()> {
     // init rustls
-    debug_assert!(
-        rustls::crypto::ring::default_provider()
-            .install_default()
-            .is_ok(),
-        "rustls has been already initialized"
-    );
+    let rustls_installed = rustls::crypto::ring::default_provider()
+        .install_default()
+        .is_ok();
+    debug_assert!(rustls_installed, "rustls has been already initialized");
 
     // init tokio runtime and attach to main thread
     // tokio is axillary rt here, so no `#[tokio::main]`
