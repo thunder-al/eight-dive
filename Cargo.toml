@@ -1,0 +1,12 @@
+[package]
+name = "eight-dive"
+version = "0.0.0"
+edition = "2024"
+
+[dependencies]
+gpui-kit = "0.6"
+anyhow = "1.0"
+kube = { version = "4" }
+tokio = { version = "1", features = ["rt-multi-thread", "net", "time"] }
+k8s-openapi = { version = "0.28", features = ["v1_32"] }
+rustls = { version = "0.23", default-features = false, features = ["std", "ring"] }
